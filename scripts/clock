@@ -1,0 +1,12 @@
+#!/bin/sh
+# Script for status bar clock 
+
+clock="$(date +"%R [%e.%m.%y %a]")"
+weatherreport="$HOME/.local/share/weatherreport"
+
+case $BUTTON in
+     3) curl -sf "wttr.in" > "$weatherreport" && alacritty -e less -Srf "$weatherreport" ;;
+     4) alacritty -e nvim "$0" ;;
+esac
+
+echo "$clock"

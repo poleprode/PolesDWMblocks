@@ -1,0 +1,17 @@
+#!/bin/bash
+# Script for status bar to display playing song
+
+song="$(mpc | sed "/^volume:/d;s/\\&/&amp;/g;/\\[paused\\].*/g;/\\[playing\\].*/d" | paste -sd ' ' -;)"
+
+case $BUTTON in
+	1) urxvt -e ncmpcpp ;;
+	4) alacritty -e nvim "$0" ;;
+esac
+
+
+if [[ "$song" = "" ]]
+then
+	echo ""
+else
+	echo "  $song |"
+fi

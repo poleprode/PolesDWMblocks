@@ -1,0 +1,13 @@
+#!/bin/sh
+# Script for RAM display in status bar
+
+#ram="$(free -h | awk '/^Mem:/ {print $3 "/" $2}')" # Shows in number of gib
+ram="$(free | grep Mem | awk '{print $3/$2 * 100}' | sed 's/[.].*//')" # Shows in %
+
+case $BUTTON in
+	1) urxvt -e gotop ;;
+	3) urxvt -e htop ;;
+	4) alacritty -e nvim "$0" ;;
+esac
+
+echo "[RAM  $ram%]"

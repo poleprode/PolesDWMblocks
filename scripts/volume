@@ -1,0 +1,18 @@
+#!/bin/bash
+# Display volume for status bar
+
+vol="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
+volmute="$(amixer get Master | tail -n1 | awk '{print $6}')"
+
+case $BUTTON in 
+    1) urxvt -e alsamixer ;;
+    3) urxvt -e pacmixer ;;
+    4) alacritty -e nvim "$0" ;;
+esac
+
+if [[ "$volmute" = "[on]" ]]
+then
+	echo " ${vol}%"
+else
+	echo ""
+fi

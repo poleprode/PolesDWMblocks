@@ -1,0 +1,12 @@
+#!/bin/sh
+# Script for CPU usage display for status bar
+
+cpu="$(top -bn 1 | awk '/^%Cpu/ {print int($2 + $4 + $6)}')"
+
+case $BUTTON in
+	1) urxvt -e gotop ;;
+	3) urxvt -e htop ;;
+	4) alacritty -e nvim "$0" ;;
+esac
+
+echo "[CPU $cpu%]"
