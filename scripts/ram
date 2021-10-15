@@ -5,8 +5,8 @@
 ram="$(free | grep Mem | awk '{print $3/$2 * 100}' | sed 's/[.].*//')" # Shows in %
 
 case $BUTTON in
-	1) urxvt -e gotop ;;
-	3) urxvt -e htop ;;
+	1) alacritty --class gotop -e gotop ;;
+	3) alacritty --class htop -e htop ;;
 	4) alacritty -e nvim "$0" ;;
 esac
 
