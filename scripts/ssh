@@ -1,0 +1,11 @@
+#!/bin/bash
+# Script for status bar to display icon when ssh is on
+
+statush="$(systemctl status sshd.service | awk '/Active/ {print $2}')"
+
+if [[ "$statush" = "inactive" ]]
+then
+	exit 0	
+else
+	echo "  |"
+fi

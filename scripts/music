@@ -11,7 +11,7 @@ esac
 
 if [[ "$song" = "" ]]
 then
-	echo ""
+	exit 0
 else
 	echo "  $song |"
 fi

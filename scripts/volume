@@ -12,7 +12,7 @@ esac
 
 if [[ "$volmute" = "[on]" ]]
 then
-	echo " ${vol}%"
+	echo "  ${vol}%"
 else
 	echo ""
 fi

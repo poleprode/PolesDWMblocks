@@ -1,0 +1,12 @@
+#!/bin/bash
+# Script for status bar to display bluetooth icon if it's on
+
+blue="$(systemctl status bluetooth.service | awk '/Active/ {print $2}')"
+
+
+if [[ "$blue" = "inactive" ]]
+then
+	exit 0
+else
+	echo "  |"
+fi
